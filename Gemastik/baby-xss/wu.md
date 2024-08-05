@@ -1,14 +1,11 @@
-Observation on the application:
-
-    Flag is stored in admin cookie.
-    Flag cookie is set to SameSite=Strict that means we can't access it from another domain, even from an iframe.
-    The application is vulnerable to XSS in this code:
+# Write Up
 
 Observation on the application:
+- Flag is stored in admin cookie.
+- Flag cookie is set to SameSite=Strict that means we can't access it from another domain, even from an iframe.
+- The application is vulnerable to XSS in this code:
 
-    Flag is stored in admin cookie.
-    Flag cookie is set to SameSite=Strict that means we can't access it from another domain, even from an iframe.
-    The application is vulnerable to XSS in this code:
+
 
     ...snip...
     function createWaifuCardHTML(file, buttonText, buttonAction) {
@@ -19,15 +16,17 @@ Observation on the application:
     }
     ...snip...
 
-    But we can't directly exploit it because there's some restriction here:
+But we can't directly exploit it because there's some restriction here:
 
     function displayClaimedWaifus(paths) {
         if (REGEX_SAVE_PROPS.test(initialHash)) {
             throwAlert("Invalid characters detected in the hash. Please try again.");
         }
-        ...snip...
+...snip...
     }
-    ...snip...
+
+    
+...snip...
 
     ...snip...
     function throwAlert(message) {
