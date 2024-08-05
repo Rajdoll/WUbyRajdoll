@@ -5,8 +5,6 @@ Observation on the application:
 - Flag cookie is set to SameSite=Strict that means we can't access it from another domain, even from an iframe.
 - The application is vulnerable to XSS in this code:
 
-
-
     ...snip...
     function createWaifuCardHTML(file, buttonText, buttonAction) {
         const sanitizedFile = DOMPurify.sanitize(file);
@@ -16,18 +14,17 @@ Observation on the application:
     }
     ...snip...
 
-But we can't directly exploit it because there's some restriction here:
+- But we can't directly exploit it because there's some restriction here:
 
     function displayClaimedWaifus(paths) {
         if (REGEX_SAVE_PROPS.test(initialHash)) {
             throwAlert("Invalid characters detected in the hash. Please try again.");
         }
-...snip...
+        ...snip...
     }
+    ...snip...
 
     
-...snip...
-
     ...snip...
     function throwAlert(message) {
         document.location.hash = "";
@@ -38,7 +35,7 @@ But we can't directly exploit it because there's some restriction here:
 
 Here the step to get xss and steal the flag
 
-    Create a page that contains the following code:
+1. Create a page that contains the following code:
 
 <body></body>
 <script>
@@ -75,13 +72,12 @@ Here the step to get xss and steal the flag
     document.body.appendChild(i1)
 </script>
 
-    Serve the page using a web server, make sure the server is accessible from the internet.
-    Send the link to the victim.
-    Wait for the victim to open the link.
-    The flag will be sent to the webhook.
+2.Serve the page using a web server, make sure the server is accessible from the internet.
+3.Send the link to the victim.
+4.Wait for the victim to open the link.
+5.The flag will be sent to the webhook.
 
-Read more
-
+**Read more**
     https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
     https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox
     https://www.w3.org/TR/WD-frames-970331#Infinite%20Recursion
