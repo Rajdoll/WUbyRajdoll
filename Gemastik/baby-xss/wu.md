@@ -83,7 +83,7 @@ Here the step to get xss and steal the flag
 5.The flag will be sent to the webhook.
 
 **Read more**
-    https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
-    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox
-    https://www.w3.org/TR/WD-frames-970331#Infinite%20Recursion
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox
+- https://www.w3.org/TR/WD-frames-970331#Infinite%20Recursion
 
