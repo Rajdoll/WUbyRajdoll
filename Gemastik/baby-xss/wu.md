@@ -5,6 +5,7 @@ Observation on the application:
 - Flag cookie is set to SameSite=Strict that means we can't access it from another domain, even from an iframe.
 - The application is vulnerable to XSS in this code:
 
+'''javascript
     ...snip...
     function createWaifuCardHTML(file, buttonText, buttonAction) {
         const sanitizedFile = DOMPurify.sanitize(file);
@@ -15,6 +16,8 @@ Observation on the application:
     ...snip...
 
 - But we can't directly exploit it because there's some restriction here:
+
+'''javascript
 
     function displayClaimedWaifus(paths) {
         if (REGEX_SAVE_PROPS.test(initialHash)) {
