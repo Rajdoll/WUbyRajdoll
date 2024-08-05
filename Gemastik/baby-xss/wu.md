@@ -40,8 +40,7 @@ Here the step to get xss and steal the flag
 
 1. Create a page that contains the following code:
 
-'''
-
+'''java
 <body></body>
 <script>
     const TARGET = "http://proxy"
